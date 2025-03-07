@@ -41,3 +41,18 @@ def get_escape_time_color_arr(
     Returns:
         np.ndarray: Array of floats determined by the escape time of each c-value
     """
+
+def get_julia_color_arr(
+    c_arr: np.ndarray,
+    max_iterations: int
+) -> np.ndarray:
+    """
+    Function: The function will return an array of the same shape as c_arr with color values in [0,1] according to the escape time of each c-value.
+
+    Args:
+        c_arr (np.ndarray): Array of complex numbers
+        max_iterations (int): Maximum number of iterations before None is returned
+
+    Returns:
+        np.ndarray: Array of floats determined by the escape time of each c-value
+    """
