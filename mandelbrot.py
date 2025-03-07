@@ -1,3 +1,5 @@
+import numpy as np
+
 def get_escape_time(c: complex, max_iterations: int) -> int | None:
     """
     Function: The function returns the number of iterations it takes for c to escape or None if c does not escape in max_iterations.
@@ -9,6 +11,16 @@ def get_escape_time(c: complex, max_iterations: int) -> int | None:
     Returns:
         int or None: Iterations it took for c to escape or None
     """
+
+    z = c #sets z to be c
+    num_calls = 0 #creates num_calls
+    while num_calls <= max_iterations: #runs loop while the iterations do not exceed max
+        if abs(z) > 2: #only runs the following if the magnitude is more than 2 and thus trends towards infinity
+            return num_calls #returns the escape time
+        else:
+            z = np.power(z,2) + c #changes zn to zn+1
+            num_calls += 1 #increases the number of calls
+    return None #if num_calls becomes greater than max_iters before it returns the calls, then it returns None
 
 def get_complex_grid(
     top_left: complex,
