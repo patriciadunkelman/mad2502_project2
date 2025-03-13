@@ -37,7 +37,17 @@ def get_complex_grid(
 
     Returns:
         np.ndarray: Array of complex numbers
+
+    References:
+        https://www.geeksforgeeks.org/complex-numbers-in-python-set-1-introduction/#
     """
+
+    real = np.arange(top_left.real, bottom_right.real, step) #creates array for the real values
+    imag = np.arange(top_left.imag, bottom_right.imag, -step) #creates array for the imaginary values
+    imag = imag.reshape(len(imag), 1) #turns imaginary values to column
+
+    ret = real + 1j * imag
+    return ret
 
 def get_escape_time_color_arr(
     c_arr: np.ndarray,
