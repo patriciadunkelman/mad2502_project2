@@ -63,6 +63,16 @@ def get_escape_time_color_arr(
     Returns:
         np.ndarray: Array of floats determined by the escape time of each c-value
     """
+    color_arr = np.zeros(c_arr.shape, dtype =np.float64)
+
+    for index, val in np.ndenumerate(c_arr):
+        et = get_escape_time(val, max_iterations)
+        if et is None:
+            color_arr[index] = 0.0
+        else:
+            color_arr[index] = (max_iterations - et + 1) / (max_iterations + 1)
+    return color_arr
+
 
 def get_julia_color_arr(
     c_arr: np.ndarray,
